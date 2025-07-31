@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Películas{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #5e81ac;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #eceff4;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #2e3440;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #5e81ac;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        h1, h2 {
+            color: #2e3440;
+        }
+
+        button, input[type="submit"] {
+            background-color: #5e81ac;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background-color: #4c679c;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎬 Mi Página de Películas</h1>
+    </header>
+
+    <nav>
+        <a href="{% url 'home' %}">Inicio</a>
+        <a href="{% url 'crear-pelicula' %}">Crear Película</a>
+        <a href="{% url 'crear-director' %}">Crear Director</a>
+        <a href="{% url 'crear-resena' %}">Crear Actor</a>
+        <a href="{% url 'buscar-pelicula' %}">Buscar Película</a>
+        <a href="{% url 'listar-peliculas' %}">Listar Películas</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Proyecto Django - Candelaria</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'peliculas/base.html' %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h2>Bienvenido a tu primera página con Django</h2>
+<h4>Estos son los actores y directores cargados:</h4>
+
+
+<h3>🎭 Actores cargados:</h3>
+{% if actores %}
+    <ul>
+        {% for actor in actores %}
+            <li>{{ actor.nombre }} - {{ actor.edad }} años</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay actores cargados.</p>
+{% endif %}
+
+<h3>🎬 Directores cargados:</h3>
+{% if directores %}
+    <ul>
+        {% for director in directores %}
+            <li>{{ director.nombre }} - {{ director.nacionalidad }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay directores cargados.</p>
+{% endif %}
+{% endblock %}
