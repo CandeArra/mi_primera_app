@@ -2,99 +2,134 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Películas{% endblock %}</title>
     <style>
+        /* Estilo global */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #f4f0e6; /* Fondo cálido suave */
+            color: #4e4e4e;
+            line-height: 1.6;
         }
 
+        /* Cabecera */
         header {
-            background-color: #5e81ac;
+            background-color: #ff8a65; /* Naranja cálido */
             color: white;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #ff7043; /* Naranja más oscuro */
         }
 
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* Barra de navegación */
         nav {
-            background-color: #eceff4;
-            padding: 10px;
+            background-color: #fff3e0; /* Crema cálida */
+            padding: 15px 20px;
             text-align: center;
-            border-bottom: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
-            margin: 0 15px;
+            margin: 0 20px;
             text-decoration: none;
-            color: #2e3440;
+            color: #d32f2f; /* Rojo cálido */
             font-weight: bold;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.2s;
         }
 
         nav a:hover {
-            color: #5e81ac;
+            color: #ff8a65; /* Naranja cálido al hacer hover */
+            transform: scale(1.1);
         }
 
+        /* Contenido principal */
         main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 30px;
+            max-width: 900px;
+            margin: 20px auto;
             background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            margin-top: 30px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border-top: 5px solid #ff7043;
         }
 
-        h1, h2 {
-            color: #2e3440;
+        main h1, main h2 {
+            color: #d32f2f;
         }
 
+        /* Botones */
         button, input[type="submit"] {
-            background-color: #5e81ac;
+            background-color: #ff7043; /* Naranja cálido */
             color: white;
             border: none;
-            padding: 10px 16px;
-            border-radius: 4px;
+            padding: 12px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         button:hover, input[type="submit"]:hover {
-            background-color: #4c679c;
+            background-color: #ff5722; /* Rojo cálido más oscuro */
+            transform: scale(1.05);
         }
 
+        /* Formulario */
         form input, form select, form textarea {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa; /* Fondo de formulario claro */
         }
 
+        form input:focus, form select:focus, form textarea:focus {
+            border-color: #ff7043;
+            box-shadow: 0 0 5px rgba(255, 112, 67, 0.5);
+        }
+
+        /* Lista de elementos */
         ul {
             list-style: none;
             padding: 0;
         }
 
         ul li {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
+            padding: 12px;
+            background-color: #fff8e1; /* Fondo cálido claro */
+            border-bottom: 1px solid #f4b400; /* Amarillo suave */
+            border-radius: 5px;
+            margin-bottom: 8px;
         }
 
+        /* Pie de página */
         footer {
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            color: #999;
+            color: #757575;
+            background-color: #ffccbc; /* Color de fondo suave */
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🎬 Mi Página de Películas</h1>
+        <h1>🎬 Gestión de Peliculas</h1>
     </header>
 
     <nav>
