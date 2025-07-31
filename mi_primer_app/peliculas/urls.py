@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # Ruta para la página de inicio (Home)
+    # Ruta para la página de inicio 
     path('', views.home, name='home'),
 
     # Ruta para crear un nuevo director
