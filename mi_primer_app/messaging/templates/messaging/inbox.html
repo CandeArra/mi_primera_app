@@ -1,0 +1,16 @@
+{% extends 'peliculas/base.html' %}
+{% block title %}Mensajes{% endblock %}
+{% block content %}
+<h2>Mis Mensajes</h2>
+<p><a href="{% url 'messaging:new' %}">Nuevo mensaje</a></p>
+<ul>
+  {% for m in messages_list %}
+    <li>
+      <strong>{{ m.sender.username }}</strong> → <strong>{{ m.recipient.username }}</strong>
+      ({{ m.created_at }}) — {{ m.body|truncatechars:80 }}
+    </li>
+  {% empty %}
+    <li>No tenés mensajes aún.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

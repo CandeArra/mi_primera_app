@@ -1,0 +1,9 @@
+{% extends 'peliculas/base.html' %}
+{% block title %}Nuevo mensaje{% endblock %}
+{% block content %}
+<h2>Nuevo mensaje</h2>
+<form method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Enviar</button>
+</form>
+{% endblock %}

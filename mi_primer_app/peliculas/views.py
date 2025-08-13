@@ -11,6 +11,10 @@ def home(request):
         'directores': directores
     })
 
+# Vista de sobre nosotros
+def about_view(request):
+    return render(request, "peliculas/about.html")
+
 # Vista para crear una nueva película
 def crear_pelicula(request):
     if request.method == 'POST':

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Películas{% endblock %}</title>
     <style>
+
         /* Estilo global */
         body {
             font-family: 'Arial', sans-serif;
@@ -137,16 +138,39 @@
         <h1> Gestión de Películas</h1>
     </header>
 
+    
+    
     <nav>
         <a href="{% url 'home' %}">Inicio</a>
-        <a href="{% url 'crear-pelicula' %}">Crear Película</a>
-        <a href="{% url 'crear-director' %}">Crear Director</a>
-        <a href="{% url 'crear-resena' %}">Crear Actor</a>
-        <a href="{% url 'buscar-pelicula' %}">Buscar Película</a>
-        <a href="{% url 'listar-peliculas' %}">Listar Películas</a>
+        <a href="{% url 'about' %}">Acerca de mí</a>
+        <a href="{% url 'pages:list' %}">Pages</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">Perfil</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'messaging:inbox' %}">Mensajes</a>
+
+            <!-- Opciones relacionadas con la gestión de películas -->
+            <a href="{% url 'crear-pelicula' %}">Crear Película</a>
+            <a href="{% url 'crear-director' %}">Crear Director</a>
+            <a href="{% url 'crear-resena' %}">Crear Actor</a>
+            <a href="{% url 'buscar-pelicula' %}">Buscar Película</a>
+            <a href="{% url 'listar-peliculas' %}">Listar Películas</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
     </nav>
 
+
     <main>
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+         {% endif %}
         {% block content %}{% endblock %}
     </main>
 

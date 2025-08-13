@@ -1,9 +1,16 @@
 from django.urls import path
+from django.urls import path, include  # Añadir 'include' para incluir las URLs de 'accounts'
 from . import views
 
-urlpatterns = [
+urlpatterns = [    
+    path('accounts/', include('accounts.urls')),  
+    path('messaging/', include('messaging.urls')),
+        
     # Ruta para la página de inicio 
     path('', views.home, name='home'),
+   
+    # Ruta para la página de sobre nosotros 
+    path('about/', views.about_view, name='about'),
 
     # Ruta para crear un nuevo director
     path('crear-director/', views.crear_director, name='crear-director'),

@@ -30,15 +30,25 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# settings.py
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'ckeditor',
+    'messaging',
+    'accounts', 
+    'pages',
     'peliculas',
+
 ]
+
+# settings.py
+LOGIN_URL = 'accounts:login'  # Redirige al login si el usuario no está autenticado
+LOGIN_REDIRECT_URL = 'home'   # Redirige al home después de iniciar sesión
+LOGOUT_REDIRECT_URL = 'home'  # Redirige al home después de cerrar sesión
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -112,11 +122,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']  
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-STATIC_URL = 'static/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
