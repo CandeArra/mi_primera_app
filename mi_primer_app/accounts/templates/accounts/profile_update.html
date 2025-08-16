@@ -1,0 +1,40 @@
+{% extends 'peliculas/base.html' %}
+
+{% block title %}Actualizar Perfil{% endblock %}
+
+{% block content %}
+  <h2>Actualizar Perfil</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h3>Actualizar Datos del Perfil</h3>
+    <div>
+      <!-- Mostrar solo los campos que el usuario puede actualizar -->
+      <label for="avatar">Avatar</label>
+      {{ profile_form.avatar }} <!-- Avatar: campo para subir una nueva imagen -->
+    </div>
+    <div>
+      <label for="bio">Biografía</label>
+      {{ profile_form.bio }} <!-- Biografía -->
+    </div>
+    <div>
+      <label for="birthdate">Fecha de Nacimiento</label>
+      {{ profile_form.birthdate }} <!-- Fecha de nacimiento -->
+    </div>
+    <div>
+      <label for="link">Enlace</label>
+      {{ profile_form.link }} <!-- Enlace -->
+    </div>
+
+    <h3>Cambiar Contraseña</h3>
+    <div>
+      <!-- Aquí el formulario para cambiar la contraseña -->
+      {{ password_form.as_p }}
+    </div>
+
+    <button type="submit">Guardar Cambios</button>
+  </form>
+
+  <a href="{% url 'profile' %}">Volver a mi perfil</a>
+{% endblock %}

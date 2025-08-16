@@ -1,14 +1,44 @@
 {% extends 'peliculas/base.html' %}
+
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-<h2>Bienvenido!</h2>
+<h2>Bienvenido a nuestro sitio de películas!</h2>
+<p>Este es un sitio dedicado a las películas, con información de actores y directores conocidos. Aquí podrás ver un listado de las películas, actores y directores más populares.</p>
+<p>Si estás registrado, podrás agregar, editar o borrar actores, directores o películas a nuestra base de datos.</p>
+
+<h3>Películas cargadas:</h3>
+{% if peliculas %}
+    <ul>
+        {% for pelicula in peliculas %}
+            <li>
+                <h4>{{ pelicula.titulo }} - {{ pelicula.genero }}</h4>
+                {% if user.is_authenticated %}
+                    <!-- Botón para editar -->
+                    <a href="{% url 'editar-objeto' tipo='pelicula' pk=pelicula.pk %}" class="btn btn-edit">Editar</a>
+                    <!-- Botón para borrar -->
+                    <a href="{% url 'borrar-objeto' tipo='pelicula' pk=pelicula.pk %}" class="btn btn-delete">Borrar</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay películas cargadas.</p>
+{% endif %}
 
 <h3>Actores cargados:</h3>
 {% if actores %}
     <ul>
         {% for actor in actores %}
-            <li>{{ actor.nombre }} - {{ actor.edad }} años</li>
+            <li>
+                <h4>{{ actor.nombre }}</h4>
+                {% if user.is_authenticated %}
+                    <!-- Botón para editar -->
+                    <a href="{% url 'editar-objeto' tipo='actor' pk=actor.pk %}" class="btn btn-edit">Editar</a>
+                    <!-- Botón para borrar -->
+                    <a href="{% url 'borrar-objeto' tipo='actor' pk=actor.pk %}" class="btn btn-delete">Borrar</a>
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
 {% else %}
@@ -19,10 +49,19 @@
 {% if directores %}
     <ul>
         {% for director in directores %}
-            <li>{{ director.nombre }} - {{ director.nacionalidad }}</li>
+            <li>
+                <h4>{{ director.nombre }}</h4>
+                {% if user.is_authenticated %}
+                    <!-- Botón para editar -->
+                    <a href="{% url 'editar-objeto' tipo='director' pk=director.pk %}" class="btn btn-edit">Editar</a>
+                    <!-- Botón para borrar -->
+                    <a href="{% url 'borrar-objeto' tipo='director' pk=director.pk %}" class="btn btn-delete">Borrar</a>
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No hay directores cargados.</p>
 {% endif %}
 {% endblock %}
+

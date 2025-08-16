@@ -5,10 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('peliculas.urls')),   # ya lo tenés (home + about)
-    path('pages/', include('pages.urls')), # listado/detalle/CRUD de pages
-   # path('accounts/', include('accounts.urls')),  # login, signup, perfil
-    #path('messages/', include('messaging.urls')), # mensajería
+    path('', include('peliculas.urls')),   
 ]
 
 if settings.DEBUG:

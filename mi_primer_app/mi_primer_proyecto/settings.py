@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,15 +41,14 @@ INSTALLED_APPS = [
     'ckeditor',
     'messaging',
     'accounts', 
-    'pages',
     'peliculas',
 
 ]
 
 # settings.py
-LOGIN_URL = 'accounts:login'  # Redirige al login si el usuario no está autenticado
-LOGIN_REDIRECT_URL = 'home'   # Redirige al home después de iniciar sesión
-LOGOUT_REDIRECT_URL = 'home'  # Redirige al home después de cerrar sesión
+LOGIN_URL = 'accounts:login' 
+LOGIN_REDIRECT_URL = 'home'   
+LOGOUT_REDIRECT_URL = 'home' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,11 +122,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Archivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']  
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
+# Archivos de medios (imágenes y otros archivos subidos por los usuarios)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
