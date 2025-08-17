@@ -1,7 +1,7 @@
-# Formulario para Película
 from django import forms
 from .models import Pelicula, Director, Actor
 
+# Formulario para Película
 class PeliculaForm(forms.ModelForm):
     class Meta:
         model = Pelicula

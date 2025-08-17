@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .forms import SignUpForm, ProfileForm
-from .models import Profile
 
 class UserRegisterView(CreateView):
     model = User
@@ -85,3 +84,5 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', {
         'password_change_form': password_form,
     })
+
+
