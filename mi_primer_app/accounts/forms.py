@@ -1,11 +1,10 @@
-# accounts/forms.py
 from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from .models import Profile
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField()
+    email = forms.EmailField(required=True, label="Correo electrónico")
 
     class Meta:
         model = User
@@ -14,6 +13,4 @@ class SignUpForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio', 'birthdate', 'link']  
-
-
+        fields = ['avatar', 'bio', 'birthdate', 'link']

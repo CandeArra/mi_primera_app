@@ -1,33 +1,24 @@
 {% extends 'peliculas/base.html' %}
 
-{% load static %}  <!-- Asegúrate de cargar los archivos estáticos -->
-
 {% block title %}Mi Perfil{% endblock %}
 
 {% block content %}
   <h2>Mi Perfil</h2>
 
-  <!-- Verifica si el usuario tiene un avatar antes de mostrar la imagen -->
-  {% if profile.avatar %}
-    <div>
-      <img src="{{ profile.avatar.url }}" alt="Avatar" width="150" height="150">
-    </div>
-  {% else %}
-    <div>
-      <img src="{% static 'images/default-avatar.png' %}" alt="Avatar" width="150" height="150">
-    </div>
-  {% endif %}
+  <!-- Avatar -->
+{% if profile.avatar %}
+    <img src="{{ profile.avatar.url }}" alt="Avatar" width="150">
+{% else %}
+    <img src="/media/avatars/download.png" alt="Avatar por defecto" width="150" height="150">
+{% endif %}
 
   <h3>Detalles del Usuario:</h3>
   <p><strong>Nombre de usuario:</strong> {{ profile.user.username }}</p>
   <p><strong>Correo electrónico:</strong> {{ profile.user.email }}</p>
-  <p><strong>Biografía:</strong> {{ profile.bio }}</p>
-  <p><strong>Enlace:</strong> {{ profile.link }}</p>
-  <p><strong>Fecha de nacimiento:</strong> {{ profile.birthdate }}</p>
+  <p><strong>Biografía:</strong> {{ profile.bio|default:"Sin información" }}</p>
+  <p><strong>Enlace:</strong> {{ profile.link|default:"Sin información" }}</p>
+  <p><strong>Fecha de nacimiento:</strong> {{ profile.birthdate|default:"Sin información" }}</p>
 
-  <!-- Enlace para editar el perfil -->
   <a href="{% url 'profile_edit' %}">Editar Perfil</a>
-
-  <!-- Enlace para cambiar la contraseña -->
   <a href="{% url 'change_password' %}">Cambiar Contraseña</a>
 {% endblock %}

@@ -1,24 +1,19 @@
 {% extends 'peliculas/base.html' %}
-
-{% block title %}Registro de Usuario{% endblock %}
-
 {% block content %}
-  <h2>Registro de Usuario</h2>
-  
-  <form method="POST">
+<h2>Registro</h2>
+
+<form method="POST">
     {% csrf_token %}
-    
-    {{ form.as_p }}  <!-- Este es el formulario que Django genera, incluyendo todos los campos -->
+    {{ form.as_p }}
+    <button type="submit">Registrarme</button>
+</form>
 
-    <button type="submit">Registrar</button>
-  </form>
-
-  {% if messages %}
-    <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 {% endblock %}
 

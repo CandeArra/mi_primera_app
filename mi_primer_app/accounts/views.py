@@ -1,52 +1,25 @@
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm, AuthenticationForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.forms import PasswordChangeForm, AuthenticationForm
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, DetailView
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-
 from .forms import SignUpForm, ProfileForm
 from .models import Profile
 
-
-# Vista de registro de usuario
-class SignUpView(CreateView):
+class UserRegisterView(CreateView):
+    model = User
     form_class = SignUpForm
-    template_name = 'accounts/signup.html'
-    success_url = reverse_lazy('login')  # Redirige al login después de un registro exitoso
-
+    template_name = "accounts/signup.html"
+    success_url = reverse_lazy("login")  
     def form_valid(self, form):
-        # Verificar si el nombre de usuario ya existe
-        if User.objects.filter(username=form.cleaned_data['username']).exists():
-            form.add_error('username', 'Este nombre de usuario ya está en uso.')
-            return self.form_invalid(form)
-
-        # Verificar si las contraseñas coinciden
-        if form.cleaned_data['password1'] != form.cleaned_data['password2']:
-            form.add_error('password2', 'Las contraseñas no coinciden.')
-            return self.form_invalid(form)
-
-        # Guardar el usuario
-        user = form.save()
-
-        # Iniciar sesión automáticamente
-        login(self.request, user)
-
-        # Mensaje de éxito
-        messages.success(self.request, '¡Te has registrado correctamente!')
-
-        # Redirigir al login
-        return redirect(self.get_success_url())  # Redirige a la página de login
-
-    def form_invalid(self, form):
-        # Si el formulario no es válido, puedes ver los errores
-        messages.error(self.request, 'Error en el registro. Verifica los datos e inténtalo de nuevo.')
-        return super().form_invalid(form)
-
-
+        user = form.save()  # guarda el usuario con contraseña 
+        messages.success(self.request, "¡Tu cuenta fue creada con éxito! Ahora inicia sesión.")
+        return super().form_valid(form)
+    
 # Vista de inicio de sesión
 class UserLoginView(LoginView):
     form_class = AuthenticationForm

@@ -1,7 +1,5 @@
 {% extends 'peliculas/base.html' %}
 
-{% load static %}  <!-- Aquí cargas el tag static -->
-
 {% block title %}Editar Perfil{% endblock %}
 
 {% block content %}
@@ -19,7 +17,7 @@
           <img src="{{ profile_form.instance.avatar.url }}" alt="Avatar" width="150" height="150">
         {% else %}
           <!-- Si el usuario NO tiene un avatar, muestra la imagen predeterminada -->
-          <img src="{% static 'avatars/6858504.png' %}" alt="Avatar" width="150" height="150">
+          <img src="{{ MEDIA_URL }}avatars/download.png" alt="Avatar por defecto" width="150" height="150">
         {% endif %}
       </div>
     </div>
