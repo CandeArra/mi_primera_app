@@ -1,4 +1,7 @@
-**Cine - Aplicación Web Estilo Blog sobre Cine**
+Video explicativo 
+https://github.com/CandeArra/mi_primera_app/releases/tag/v1     
+
+ **Cine - Aplicación Web Estilo Blog sobre Cine**
 
 **Descripción:**
 
